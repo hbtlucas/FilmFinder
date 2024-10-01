@@ -32,7 +32,7 @@ function Home() {
     <>
      <div className="container mx-auto py-10">
       <h4 className="text-lg font-bold mb-4">Lista de Filmes</h4>
-      <table className="min-w-full bg-white border border-gray-400">
+      <table className="bg-white border border-gray-400">
         <thead >
           <tr>
             <th className="py-2 px-4 border-b">ID</th>
@@ -58,7 +58,7 @@ function Home() {
                   <button className="bg-slate-900 text-white px-4 py-2 rounded me-2">Editar</button>
                 </Link>
                 <button 
-                  className="bg-red-600 text-white px-4 py-2 rounded" 
+                  className="bg-slate-900 text-white px-4 py-2 rounded" 
                   onClick={() => handleDelete(filme.id)}>
                   Deletar
                 </button>
@@ -67,15 +67,15 @@ function Home() {
           ))}
         </tbody>
       </table>
-      <div className="flex justify-end">
+      <div className="flex justify-start">
         <div className="m-3">
           <Link href="/filmes/create" passHref>
             <button className="bg-emerald-700 text-white px-4 py-2 rounded mt-4">Adicionar Novo Filme</button>
           </Link>
         </div>
         <div className="m-3">
-          <Link href="/generos/create" passHref>
-            <button className="bg-emerald-700 text-white px-4 py-2 rounded mt-4">Adicionar Novo Gênero</button>
+          <Link href="/generos" passHref>
+            <button className="bg-slate-900 text-white px-4 py-2 rounded mt-4">Ver Gêneros</button>
           </Link>
         </div>
       </div>

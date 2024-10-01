@@ -10,7 +10,7 @@ export default function handler(req, res) {
   res.status(405).send({});
 }
 
-async function handlerGetgeneros(req, res) {
+async function handlerGetgeneros(req, res) { //requisicao get para buscar dados - listar
   const prisma = new PrismaClient();
   try {
     console.log('PASSEI AQUI');
@@ -22,7 +22,7 @@ async function handlerGetgeneros(req, res) {
   }
 }
 
-async function handlerPostgeneros(req, res) {
+async function handlerPostgeneros(req, res) { //requisicao post para enviar dados - salvar - criar
   const prisma = new PrismaClient();
   const { name } = req.body;
   try {
