@@ -1,6 +1,6 @@
 "use client"
 import { api } from "@/api-client";
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 function Home() {
@@ -21,7 +21,7 @@ function Home() {
     if (confirmDelete) {
       try { 
         await api.delete(`/api/filmes/${id}`); // Fazendo a requisição para deletar o filme dentro da api/filmes/[id] 
-        setFilmes(filmes.filter(filme => filme.id !== id)); // Remove da lista de filmes na interface
+        window.location.href = "/";
       } catch (error) {
         console.error("Erro ao deletar o filme:", error);
       }

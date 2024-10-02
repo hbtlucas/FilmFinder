@@ -1,6 +1,6 @@
 "use client"
 import { api } from "@/api-client";
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 function ListGeneros() {
@@ -21,10 +21,22 @@ useEffect(() => { //buscar generos na api generos e poder listar as opções de 
     fetchGeneros();
   }, []);
 
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Tem certeza que quer deletar?"); // Usando window.confirm para confirmação
+    if (confirmDelete) {
+      try { 
+        await api.delete(`/api/generos/${id}`); // Fazendo a requisição para deletar
+        window.location.href = "/generos"; // Redireciona após o sucesso
+      } catch (error) {
+        console.error("Erro ao deletar:", error);
+      }
+    }
+  };
+
   return (
     <>
      <div className="container mx-auto py-10">
-      <h4 className="text-lg font-bold mb-4">Lista de Filmes</h4>
+      <h4 className="text-lg font-bold mb-4">Lista de Generos</h4>
       <table className=" bg-white border border-gray-400">
         <thead >
           <tr>
@@ -44,7 +56,7 @@ useEffect(() => { //buscar generos na api generos e poder listar as opções de 
                 </Link>
                 <button 
                   className="bg-slate-900 text-white px-4 py-2 rounded" 
-                  onClick={() => handleDelete()}>
+                  onClick={() => handleDelete(genero.id)}>
                   Deletar
                 </button>
               </td>
